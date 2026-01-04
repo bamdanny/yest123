@@ -1,0 +1,20 @@
+# BTC Alpha Discovery System - Requirements
+# Core dependencies (required)
+pandas>=1.5.0
+numpy>=1.21.0
+scipy>=1.9.0
+scikit-learn>=1.0.0
+requests>=2.28.0
+tqdm>=4.64.0
+
+# Optional dependencies (enhanced functionality)
+xgboost>=1.7.0          # Better feature importance
+shap>=0.41.0            # SHAP values for feature importance
+optuna>=3.0.0           # Bayesian optimization
+deap>=1.3.0             # Genetic programming for rule discovery
+
+# Installation:
+# pip install -r requirements.txt
+#
+# Or minimal install:
+# pip install pandas numpy scipy scikit-learn requests tqdm

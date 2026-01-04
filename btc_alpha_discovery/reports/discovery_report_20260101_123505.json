@@ -1,0 +1,296 @@
+{
+  "data": {
+    "rows": 8760,
+    "columns": 26,
+    "date_range": "2025-01-01 12:32:01.873798 to 2026-01-01 11:32:01.873798",
+    "embedded_patterns": [
+      "funding_reversal",
+      "rsi_mean_reversion",
+      "oi_liquidation",
+      "vix_volatility",
+      "sentiment_contrarian"
+    ]
+  },
+  "features": {
+    "total": 222,
+    "categories": {
+      "price": 0,
+      "derivatives": 7,
+      "macro": 5,
+      "sentiment": 2,
+      "time": 0,
+      "lagged": 30
+    }
+  },
+  "targets": {
+    "total": 272,
+    "key_targets": [
+      "profitable_24h",
+      "sharpe_24h",
+      "direction_24h"
+    ]
+  },
+  "feature_importance": {
+    "top_20": [
+      "price_consolidation_50",
+      "price_sma_100",
+      "price_parkinson_vol_24h",
+      "price_hh_ll_diff_50",
+      "price_sma_200",
+      "price_realized_vol_720h",
+      "price_bb_position_50_lag_48h",
+      "price_realized_vol_168h",
+      "open",
+      "price_atr_14_pct",
+      "price_obv",
+      "price_atr_14",
+      "price_realized_vol_24h",
+      "price_zscore_720h",
+      "price_parkinson_vol_168h",
+      "price_atr_7",
+      "price_atr_7_pct",
+      "price_consolidation_20",
+      "open_interest",
+      "time_month_sin"
+    ],
+    "method": "combined (RF permutation + MI + correlation)",
+    "category_importance": {
+      "sentiment": 0.44560558746543677,
+      "other": 0.35153563134712185,
+      "macro": 0.10380592740642917,
+      "derivatives": 0.0990528537810122
+    }
+  },
+  "thresholds": {
+    "rsi_oversold": 20,
+    "rsi_overbought": 70,
+    "funding_extreme_z": 2.0,
+    "fear_extreme": 25,
+    "greed_extreme": 75,
+    "vix_high": 25,
+    "oi_change_significant": 0.05
+  },
+  "weights": {
+    "derivatives": 0.0,
+    "technical": 0.9878634172634853,
+    "sentiment": 0.0021808134791116377,
+    "macro": 0.009955769257403081
+  },
+  "entry_rules": [
+    {
+      "direction": 1,
+      "conditions": [
+        {
+          "feature": "price_consolidation_50",
+          "operator": ">",
+          "threshold": 0.8650577986906025
+        },
+        {
+          "feature": "price_sma_100",
+          "operator": "<",
+          "threshold": 5020.141836075194
+        }
+      ],
+      "win_rate": 0.8008849557522124,
+      "avg_return": 0.8008849557522124,
+      "support": 226,
+      "sharpe": 155.62377662708906
+    },
+    {
+      "direction": 1,
+      "conditions": [
+        {
+          "feature": "price_consolidation_50",
+          "operator": ">",
+          "threshold": 0.9999999999998809
+        },
+        {
+          "feature": "price_sma_100",
+          "operator": "<",
+          "threshold": 5777.8205175863895
+        }
+      ],
+      "win_rate": 0.7864077669902912,
+      "avg_return": 0.7864077669902912,
+      "support": 103,
+      "sharpe": 148.49728835393316
+    },
+    {
+      "direction": 1,
+      "conditions": [
+        {
+          "feature": "price_consolidation_50",
+          "operator": ">",
+          "threshold": 0.9999999999998809
+        },
+        {
+          "feature": "price_sma_100",
+          "operator": "<",
+          "threshold": 6465.070780660117
+        }
+      ],
+      "win_rate": 0.7485029940119761,
+      "avg_return": 0.7485029940119761,
+      "support": 167,
+      "sharpe": 133.76178358024768
+    },
+    {
+      "direction": 1,
+      "conditions": [
+        {
+          "feature": "price_consolidation_50",
+          "operator": ">",
+          "threshold": 0.8650577986906025
+        },
+        {
+          "feature": "price_sma_100",
+          "operator": "<",
+          "threshold": 5777.8205175863895
+        }
+      ],
+      "win_rate": 0.73,
+      "avg_return": 0.73,
+      "support": 400,
+      "sharpe": 127.71499233103712
+    },
+    {
+      "direction": 1,
+      "conditions": [
+        {
+          "feature": "price_sma_100",
+          "operator": "<",
+          "threshold": 5020.141836075194
+        }
+      ],
+      "win_rate": 0.6716247139588101,
+      "avg_return": 0.6716247139588101,
+      "support": 874,
+      "sharpe": 111.15663467084076
+    },
+    {
+      "direction": 1,
+      "conditions": [
+        {
+          "feature": "price_parkinson_vol_24h",
+          "operator": "<",
+          "threshold": 0.013119708845873466
+        }
+      ],
+      "win_rate": 0.6498855835240275,
+      "avg_return": 0.6498855835240275,
+      "support": 874,
+      "sharpe": 105.89385097288432
+    },
+    {
+      "direction": 1,
+      "conditions": [
+        {
+          "feature": "price_consolidation_50",
+          "operator": ">",
+          "threshold": 0.6281379876721541
+        },
+        {
+          "feature": "price_sma_100",
+          "operator": "<",
+          "threshold": 5020.141836075194
+        }
+      ],
+      "win_rate": 0.6448,
+      "avg_return": 0.6448,
+      "support": 625,
+      "sharpe": 104.69699196281562
+    },
+    {
+      "direction": 1,
+      "conditions": [
+        {
+          "feature": "price_consolidation_50",
+          "operator": ">",
+          "threshold": 0.538464449551285
+        },
+        {
+          "feature": "price_sma_100",
+          "operator": "<",
+          "threshold": 5020.141836075194
+        }
+      ],
+      "win_rate": 0.6413502109704642,
+      "avg_return": 0.6413502109704642,
+      "support": 711,
+      "sharpe": 103.9232182470431
+    },
+    {
+      "direction": 1,
+      "conditions": [
+        {
+          "feature": "price_consolidation_50",
+          "operator": ">",
+          "threshold": 0.8650577986906025
+        },
+        {
+          "feature": "price_sma_100",
+          "operator": "<",
+          "threshold": 6465.070780660117
+        }
+      ],
+      "win_rate": 0.6380165289256199,
+      "avg_return": 0.6380165289256199,
+      "support": 605,
+      "sharpe": 103.16164509547062
+    },
+    {
+      "direction": 1,
+      "conditions": [
+        {
+          "feature": "price_atr_14_pct",
+          "operator": "<",
+          "threshold": 0.01917627865821325
+        }
+      ],
+      "win_rate": 0.6361556064073226,
+      "avg_return": 0.6361556064073226,
+      "support": 874,
+      "sharpe": 102.77349448054262
+    }
+  ],
+  "exit_rules": [
+    {
+      "type": "fixed_sl_tp",
+      "conditions": [
+        {
+          "stop_loss": -0.02,
+          "take_profit": 0.04
+        }
+      ],
+      "avg_bars_held": 24.0,
+      "hit_rate": 0.55
+    },
+    {
+      "type": "time_exit",
+      "conditions": [
+        {
+          "max_bars": 48
+        }
+      ],
+      "avg_bars_held": 48.0,
+      "hit_rate": 0.5
+    }
+  ],
+  "antipatterns": [],
+  "validation": {
+    "grade": "N/A",
+    "metrics": {}
+  },
+  "grade": "N/A",
+  "ground_truth_recovery": {
+    "found": [],
+    "not_found": [
+      "oi_liquidation",
+      "funding_reversal",
+      "vix_volatility",
+      "sentiment_contrarian",
+      "rsi_mean_reversion"
+    ],
+    "recovery_rate": 0.0
+  }
+}
