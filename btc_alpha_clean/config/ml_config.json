@@ -1,0 +1,77 @@
+{
+  "data": {
+    "lookback_days": 180,
+    "target_horizon_bars": 1,
+    "bar_size_hours": 4,
+    "min_samples": 500
+  },
+  "features": {
+    "max_features": 50,
+    "variance_threshold": 0.001,
+    "correlation_threshold": 0.85,
+    "use_feature_priority": true
+  },
+  "splits": {
+    "train_ratio": 0.6,
+    "val_ratio": 0.2,
+    "test_ratio": 0.2,
+    "purge_gap_bars": 6,
+    "embargo_bars": 2
+  },
+  "walk_forward": {
+    "n_splits": 5,
+    "min_train_samples": 200,
+    "val_samples": 50,
+    "test_samples": 50,
+    "expanding_window": true
+  },
+  "models": {
+    "xgboost": {
+      "objective": "binary:logistic",
+      "eval_metric": "auc",
+      "max_depth": 4,
+      "learning_rate": 0.03,
+      "n_estimators": 500,
+      "min_child_weight": 10,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "reg_alpha": 0.1,
+      "reg_lambda": 1.0,
+      "early_stopping_rounds": 50
+    },
+    "lightgbm": {
+      "objective": "binary",
+      "metric": "auc",
+      "num_leaves": 16,
+      "learning_rate": 0.03,
+      "n_estimators": 500,
+      "min_child_samples": 20,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "reg_alpha": 0.1,
+      "reg_lambda": 1.0
+    }
+  },
+  "calibration": {
+    "method": "isotonic",
+    "cv_folds": 3
+  },
+  "confidence_thresholds": {
+    "high": 0.65,
+    "medium": 0.58,
+    "low": 0.52,
+    "neutral_band": [0.48, 0.52]
+  },
+  "telegram": {
+    "bot_token": "8580722750:AAFSFgP3CZOTZL9N4hU6mxIFxpwl0_qG9Zw",
+    "chat_id": "6520471927",
+    "send_all_scans": false,
+    "send_signals_only": true,
+    "min_confidence": "medium"
+  },
+  "paths": {
+    "models_dir": "models",
+    "reports_dir": "reports",
+    "logs_dir": "logs"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "tier1_features": {
+    "description": "OOS Sharpe > 5 - Proven strong signal",
+    "features": [
+      "deriv_feat_cg_oi_aggregated_oi_close_change_1h",
+      "deriv_cg_liquidation_aggregated_liq_ratio",
+      "deriv_feat_cg_oi_aggregated_oi_close_accel"
+    ]
+  },
+  "tier2_features": {
+    "description": "OOS Sharpe 3-5 - Moderate signal",
+    "features": [
+      "price_bb_width_50",
+      "deriv_feat_cg_oi_aggregated_oi_high_accel",
+      "deriv_feat_cg_funding_vol_weighted_funding_vol_open_cumul_168h",
+      "price_parkinson_vol_42h",
+      "deriv_feat_cg_oi_aggregated_oi_open_change_1h",
+      "deriv_feat_cg_oi_aggregated_oi_low_change_1h",
+      "deriv_feat_cg_oi_aggregated_oi_low_accel",
+      "deriv_feat_cg_liquidation_aggregated_liq_ratio_max_24h",
+      "macro_feat_rates_t10yie_change_5d",
+      "deriv_feat_cg_oi_aggregated_oi_high_change_1h"
+    ]
+  },
+  "tier3_features": {
+    "description": "OOS Sharpe 1-3 - Weak but valid signal",
+    "features": [
+      "deriv_feat_cg_funding_oi_weighted_funding_oi_low_zscore_168h_lag_48h",
+      "deriv_cg_funding_history_funding_high",
+      "sent_feat_fg_zscore_30d",
+      "deriv_feat_cg_funding_oi_weighted_funding_oi_open_accel",
+      "deriv_feat_cg_funding_oi_weighted_funding_oi_high_change_4h",
+      "macro_yield_curve_t10y3m"
+    ]
+  },
+  "blacklist_features": {
+    "description": "Failed OOS validation - DO NOT USE as primary features",
+    "features": [
+      "macro_feat_fin_conditions_vixcls_zscore_90d",
+      "macro_fin_conditions_vixcls",
+      "deriv_feat_cg_funding_vol_weighted_funding_vol_open_cumul_72h",
+      "deriv_feat_cg_oi_history_oi_low_change_24h",
+      "deriv_feat_cg_oi_history_oi_open_change_24h"
+    ]
+  },
+  "feature_weights": {
+    "tier1": 3.0,
+    "tier2": 2.0,
+    "tier3": 1.0,
+    "other": 0.5,
+    "blacklist": 0.1
+  }
+}
