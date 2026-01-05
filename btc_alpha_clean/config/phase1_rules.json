@@ -1,0 +1,140 @@
+{
+  "description": "OOS-validated rules from Phase 1 exhaustive search",
+  "min_oos_sharpe": 3.0,
+  "train_test_split": 0.6,
+  "rules": [
+    {
+      "feature": "deriv_feat_cg_oi_aggregated_oi_close_change_1h",
+      "direction": 1,
+      "threshold_type": "percentile",
+      "threshold_value": 90,
+      "oos_sharpe": 8.74,
+      "oos_win_rate": 0.735,
+      "oos_trades": 49,
+      "oos_profit_factor": 2.84,
+      "retention_ratio": 0.89
+    },
+    {
+      "feature": "deriv_feat_cg_oi_aggregated_oi_close_accel",
+      "direction": 1,
+      "threshold_type": "percentile",
+      "threshold_value": 80,
+      "oos_sharpe": 7.38,
+      "oos_win_rate": 0.614,
+      "oos_trades": 70,
+      "oos_profit_factor": 2.21,
+      "retention_ratio": 0.93
+    },
+    {
+      "feature": "price_rsi_14_lag_48h",
+      "direction": -1,
+      "threshold_type": "zscore",
+      "threshold_value": 1.5,
+      "oos_sharpe": 5.22,
+      "oos_win_rate": 0.625,
+      "oos_trades": 32,
+      "oos_profit_factor": 1.96,
+      "retention_ratio": 0.72
+    },
+    {
+      "feature": "deriv_feat_cg_funding_vol_weighted_funding_vol_close_cumul_168h",
+      "direction": -1,
+      "threshold_type": "zscore",
+      "threshold_value": 2.0,
+      "oos_sharpe": 4.98,
+      "oos_win_rate": 0.629,
+      "oos_trades": 35,
+      "oos_profit_factor": 2.07,
+      "retention_ratio": 0.62
+    },
+    {
+      "feature": "sent_feat_fg_zscore_90d",
+      "direction": 1,
+      "threshold_type": "percentile",
+      "threshold_value": 90,
+      "oos_sharpe": 4.59,
+      "oos_win_rate": 0.759,
+      "oos_trades": 29,
+      "oos_profit_factor": 2.05,
+      "retention_ratio": 0.59
+    },
+    {
+      "feature": "deriv_feat_cg_oi_aggregated_oi_high_accel",
+      "direction": 1,
+      "threshold_type": "percentile",
+      "threshold_value": 90,
+      "oos_sharpe": 4.49,
+      "oos_win_rate": 0.595,
+      "oos_trades": 37,
+      "oos_profit_factor": 2.01,
+      "retention_ratio": 0.78
+    },
+    {
+      "feature": "deriv_feat_cg_oi_aggregated_oi_low_change_1h",
+      "direction": 1,
+      "threshold_type": "percentile",
+      "threshold_value": 90,
+      "oos_sharpe": 3.64,
+      "oos_win_rate": 0.659,
+      "oos_trades": 44,
+      "oos_profit_factor": 1.63,
+      "retention_ratio": 0.62
+    },
+    {
+      "feature": "deriv_feat_cg_funding_oi_weighted_funding_oi_open_zscore_168h",
+      "direction": 1,
+      "threshold_type": "percentile",
+      "threshold_value": 80,
+      "oos_sharpe": 3.63,
+      "oos_win_rate": 0.547,
+      "oos_trades": 86,
+      "oos_profit_factor": 1.45,
+      "retention_ratio": 0.48
+    },
+    {
+      "feature": "deriv_feat_cg_oi_aggregated_oi_low_accel",
+      "direction": 1,
+      "threshold_type": "percentile",
+      "threshold_value": 80,
+      "oos_sharpe": 3.46,
+      "oos_win_rate": 0.611,
+      "oos_trades": 36,
+      "oos_profit_factor": 1.61,
+      "retention_ratio": 0.96
+    },
+    {
+      "feature": "macro_feat_fin_conditions_vixcls_zscore_30d",
+      "direction": -1,
+      "threshold_type": "zscore",
+      "threshold_value": 1.5,
+      "oos_sharpe": 2.46,
+      "oos_win_rate": 0.64,
+      "oos_trades": 25,
+      "oos_profit_factor": 1.51,
+      "retention_ratio": 0.94
+    },
+    {
+      "feature": "deriv_feat_cg_liquidation_aggregated_liq_ratio_max_24h",
+      "direction": 1,
+      "threshold_type": "percentile",
+      "threshold_value": 70,
+      "oos_sharpe": 2.04,
+      "oos_win_rate": 0.53,
+      "oos_trades": 200,
+      "oos_profit_factor": 1.17,
+      "retention_ratio": 0.97
+    }
+  ],
+  "feature_weights": {
+    "deriv_feat_cg_oi_aggregated_oi_close_change_1h": 8.74,
+    "deriv_feat_cg_oi_aggregated_oi_close_accel": 7.38,
+    "taker_buy_ratio": 6.44,
+    "price_rsi_14_lag_48h": 5.22,
+    "deriv_feat_cg_funding_vol_weighted_funding_vol_close_cumul_168h": 4.98,
+    "sent_feat_fg_zscore_90d": 4.59,
+    "deriv_feat_cg_oi_aggregated_oi_high_accel": 4.49,
+    "deriv_feat_cg_oi_aggregated_oi_low_change_1h": 3.64,
+    "deriv_feat_cg_funding_oi_weighted_funding_oi_open_zscore_168h": 3.63,
+    "deriv_feat_cg_oi_aggregated_oi_low_accel": 3.46
+  }
+}

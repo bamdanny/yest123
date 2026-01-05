@@ -1,0 +1,97 @@
+{
+  "data": {
+    "lookback_days": 180,
+    "target_horizon_bars": 1,
+    "bar_size_hours": 4,
+    "min_samples": 500
+  },
+  "features": {
+    "max_features": 50,
+    "variance_threshold": 0.001,
+    "correlation_threshold": 0.85,
+    "use_feature_priority": true,
+    "blacklist": [
+      "deriv_cg_liquidation_history_liq_ratio",
+      "deriv_cg_liquidation_aggregated_liq_ratio",
+      "deriv_cg_liquidation_history_long_liq_usd",
+      "deriv_cg_liquidation_history_short_liq_usd",
+      "deriv_cg_liquidation_history_total_liq_usd",
+      "deriv_cg_liquidation_aggregated_long_liq_usd",
+      "deriv_cg_liquidation_aggregated_short_liq_usd",
+      "deriv_cg_liquidation_aggregated_total_liq_usd"
+    ],
+    "blacklist_reason": "SAME-BAR liquidation features are reactive (effect of price movement, not cause). LAGGED liquidation features (*_lag_24h, *_sum_168h, etc.) are KEPT as they have real predictive value."
+  },
+  "splits": {
+    "train_ratio": 0.6,
+    "val_ratio": 0.2,
+    "test_ratio": 0.2,
+    "purge_gap_bars": 12,
+    "embargo_bars": 12
+  },
+  "walk_forward": {
+    "n_splits": 5,
+    "min_train_samples": 200,
+    "val_samples": 50,
+    "test_samples": 50,
+    "expanding_window": true,
+    "embargo_bars": 12
+  },
+  "models": {
+    "xgboost": {
+      "objective": "binary:logistic",
+      "eval_metric": "auc",
+      "max_depth": 4,
+      "learning_rate": 0.03,
+      "n_estimators": 500,
+      "min_child_weight": 10,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "reg_alpha": 0.1,
+      "reg_lambda": 1.0,
+      "early_stopping_rounds": 50
+    },
+    "lightgbm": {
+      "objective": "binary",
+      "metric": "auc",
+      "num_leaves": 16,
+      "learning_rate": 0.03,
+      "n_estimators": 500,
+      "min_child_samples": 20,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "reg_alpha": 0.1,
+      "reg_lambda": 1.0
+    }
+  },
+  "calibration": {
+    "method": "isotonic",
+    "cv_folds": 3
+  },
+  "confidence_thresholds": {
+    "high": 0.62,
+    "medium": 0.58,
+    "low": 0.55,
+    "neutral_band": [0.45, 0.55]
+  },
+  "telegram": {
+    "bot_token": "8580722750:AAFSFgP3CZOTZL9N4hU6mxIFxpwl0_qG9Zw",
+    "chat_id": "6520471927",
+    "send_all_scans": false,
+    "send_signals_only": true,
+    "min_confidence": "medium"
+  },
+  "paths": {
+    "models_dir": "models",
+    "reports_dir": "reports",
+    "logs_dir": "logs"
+  },
+  "realistic_expectations": {
+    "note": "With proper lagged liquidation features, expect slight improvement",
+    "auc_range": [0.52, 0.62],
+    "sharpe_range": [0.5, 3.0],
+    "win_rate_range": [0.52, 0.60],
+    "monthly_return_range": [0.01, 0.05],
+    "max_drawdown_range": [-0.30, -0.10]
+  }
+}
